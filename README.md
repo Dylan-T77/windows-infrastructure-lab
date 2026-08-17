@@ -90,6 +90,7 @@ The exact virtual machine specifications and network configuration will be docum
 windows-infrastructure-lab/
 │
 ├── documentation/
+│   ├── README.md
 │   ├── architecture.md
 │   ├── installation.md
 │   ├── active-directory.md
@@ -97,22 +98,47 @@ windows-infrastructure-lab/
 │   ├── dhcp.md
 │   ├── group-policy.md
 │   ├── file-services.md
+│   ├── security.md
 │   └── troubleshooting.md
 │
 ├── diagrams/
+│   ├── README.md
 │   └── network-topology.md
 │
 ├── scripts/
+│   ├── README.md
 │   ├── powershell/
+│   │   ├── system/
+│   │   ├── networking/
+│   │   ├── active-directory/
+│   │   ├── group-policy/
+│   │   ├── file-services/
+│   │   └── troubleshooting/
 │   └── utilities/
 │
 ├── reference/
+│   ├── README.md
 │   ├── active-directory-commands.md
 │   ├── linux-commands.md
 │   ├── networking-commands.md
 │   ├── powershell-commands.md
 │   ├── troubleshooting-checklist.md
-│   └── windows-commmands.md
+│   └── windows-commands.md
 │
 └── lab-notes/
-    └── README.md
+    ├── README.md
+    ├── build-log.md
+    ├── dc01.md
+    ├── client01.md
+    └── issues/
+```
+
+> Empty directories are represented by `.gitkeep` files until real scripts or notes are added.
+
+---
+
+## Current Lab Status
+
+The Windows Server VM has been created and renamed to `DC01`. The actual infrastructure configuration is intentionally documented only after it has been performed and verified on the lab machines.
+
+The repository currently provides the project structure, technical references and documentation framework needed to continue the build.
