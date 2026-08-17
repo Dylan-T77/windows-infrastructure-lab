@@ -53,10 +53,22 @@ Test-NetConnection <host>
 Test-NetConnection <host> -Port 443
 ```
 
+### Lab verification examples
+
+```powershell
+Get-NetAdapter
+Get-NetIPConfiguration
+Test-Connection 192.168.122.1
+Test-Connection 192.168.122.10
+```
+
+`Get-NetAdapter` confirms that the VirtIO Ethernet adapter is visible and its link state is active. `Get-NetIPConfiguration` verifies the assigned IPv4 address, subnet, gateway and DNS configuration.
+
 ## DNS
 
 ```powershell
 Resolve-DnsName <hostname>
+Resolve-DnsName -Type PTR <ip-address>
 Clear-DnsClientCache
 Get-DnsClientServerAddress
 ```
@@ -150,7 +162,7 @@ Get-PSDrive
 ## Environment and Variables
 
 ```powershell
-Get-ChildItem Env:
+Get-ChildItem Env:\
 $env:PATH
 $env:COMPUTERNAME
 ```
@@ -184,3 +196,14 @@ Resolve-DnsName <hostname>
 Get-Service
 Get-WinEvent -LogName System -MaxEvents 50
 ```
+
+## Useful CMD Commands
+
+```cmd
+ipconfig /all
+ping 192.168.122.1
+ping 192.168.122.10
+hostname
+```
+
+These were used alongside PowerShell during initial DC01 network and hostname verification.
