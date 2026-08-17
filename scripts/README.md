@@ -1,15 +1,33 @@
 # Scripts
 
-PowerShell scripts developed during the Windows Infrastructure Lab.
+PowerShell and utility scripts developed during the Windows Infrastructure Lab.
 
-Scripts will be added as automation tasks are identified during the project.
+## Structure
 
-## Planned Scripts
+```text
+scripts/
+├── powershell/
+│   ├── system/
+│   ├── networking/
+│   ├── active-directory/
+│   ├── group-policy/
+│   ├── file-services/
+│   └── troubleshooting/
+└── utilities/
+```
 
-- System information
+Scripts should be tested in the lab before being documented as working procedures.
+
+## Planned Automation
+
+- System information collection
 - Network diagnostics
-- Service management
-- User management
+- Service status checks
 - Active Directory administration
-- File and permission management
-- Troubleshooting utilities
+- User/group management
+- DNS/DHCP checks
+- File/share administration
+- Permission auditing
+- Troubleshooting collection
+
+Never commit passwords, secrets, API tokens, private keys or other sensitive values.
