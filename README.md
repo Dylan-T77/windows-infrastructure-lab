@@ -107,10 +107,12 @@ windows-infrastructure-lab/
 │   └── utilities/
 │
 ├── reference/
-│   ├── powershell-commands.md
 │   ├── active-directory-commands.md
+│   ├── linux-commands.md
 │   ├── networking-commands.md
-│   └── troubleshooting-checklist.md
+│   ├── powershell-commands.md
+│   ├── troubleshooting-checklist.md
+│   └── windows-commmands.md
 │
 └── lab-notes/
     └── README.md
