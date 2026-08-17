@@ -48,7 +48,7 @@ Remove-ADGroupMember -Identity "IT-Users" -Members test.user
 ```powershell
 Get-ADComputer -Filter *
 Get-ADComputer -Identity CLIENT01
-Move-ADObject -Identity "CN=CLIENT01,CN=Computers,DC=lab,DC=local" -TargetPath "OU=Workstations,DC=lab,DC=local"
+Move-ADObject -Identity "CN=CLIENT01,CN=Computers,DC=corp,DC=lab" -TargetPath "OU=Workstations,DC=corp,DC=lab"
 Disable-ADAccount -Identity CLIENT01$
 Enable-ADAccount -Identity CLIENT01$
 ```
@@ -61,7 +61,7 @@ New-ADOrganizationalUnit -Name "Workstations"
 New-ADOrganizationalUnit -Name "Users"
 ```
 
-## Domain and replication troubleshooting
+## Domain and Replication Troubleshooting
 
 ```powershell
 Get-ADReplicationPartnerMetadata -Target * -Scope Domain
@@ -72,7 +72,19 @@ nltest /dsgetdc:<domain>
 nltest /dclist:<domain>
 ```
 
-## Authentication / policy troubleshooting
+## DNS / Domain Controller Verification
+
+```powershell
+Get-ADDomain
+Get-ADForest
+Get-ADDomainController -Filter *
+Resolve-DnsName dc01.corp.lab
+Resolve-DnsName -Type PTR 192.168.122.10
+```
+
+For this lab, the domain is `corp.lab` and the first domain controller is `DC01` at `192.168.122.10`.
+
+## Authentication / Policy Troubleshooting
 
 ```cmd
 whoami
@@ -82,6 +94,6 @@ gpresult /r
 klist
 ```
 
-## Safe practice
+## Safe Practice
 
 Use `Get-*` commands first when learning. Confirm object names and distinguished names before using `Set-*`, `Move-*`, `Disable-*`, `Remove-*`, or other commands that modify the directory.
