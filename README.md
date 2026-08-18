@@ -8,16 +8,25 @@ This project is a practical lab for developing hands-on experience with Windows 
 
 | Hostname | Role | IP Address | Domain |
 |---|---|---|---|
-| DC01 | Domain Controller / AD DS / DNS | `192.168.122.10` | `corp.lab` |
+| DC01 | Domain Controller / AD DS / DNS / DHCP | `192.168.122.10` | `corp.lab` |
+| CLIENT01 | Domain-joined workstation | `192.168.122.224` | `corp.lab` |
 
-The server uses a VirtIO network adapter on the isolated `192.168.122.0/24` virtual network.
+The lab is hosted on Pop!_OS using virt-manager with libvirt/KVM on the isolated `192.168.122.0/24` virtual network.
 
-## Current Lab Status
+- DC01 uses a VirtIO network adapter.
+- CLIENT01 uses an `e1000e` network adapter because VirtIO caused driver/networking issues during the Windows client setup.
+- The libvirt gateway is `192.168.122.1`.
+- Active Directory DNS is provided by DC01 at `192.168.122.10`.
 
-The initial domain infrastructure has been built and verified on `DC01`.
+## Project 1 Status
+
+**Project 1 — Windows Infrastructure Lab: COMPLETE / DOCUMENTED**
+
+The physical lab build was paused after the core domain/client infrastructure was verified because the host system was approaching its RAM and CPU limits. The remaining service configuration is documented as the intended completed state so the project can be reconstructed later without losing the procedure.
+
+### Completed and verified during the live build
 
 - [x] Windows Server 2022 VM created and renamed to `DC01`
-- [x] Network connectivity verified
 - [x] Static IPv4 configured: `192.168.122.10`
 - [x] Active Directory Domain Services installed
 - [x] `corp.lab` domain created
@@ -27,21 +36,23 @@ The initial domain infrastructure has been built and verified on `DC01`.
 - [x] Reverse DNS zone configured and verified
 - [x] Organizational Units created
 - [x] Security groups created
-- [x] Test domain users created
-- [x] Users assigned to security groups
-- [x] `Workstation Baseline` GPO created
-- [x] `Workstation Baseline` linked to `Workstations`
-- [x] Windows Defender Firewall configured in the baseline GPO
+- [x] Domain test users created
+- [x] `Workstation Baseline` GPO created and linked to `Workstations`
+- [x] CLIENT01 installed
+- [x] CLIENT01 network connectivity verified
+- [x] CLIENT01 DNS pointed to DC01
+- [x] CLIENT01 joined to `corp.lab`
+- [x] Domain authentication verified on CLIENT01
+- [x] CLIENT01 computer account moved into `Workstations`
+- [x] `gpupdate /force` completed successfully on CLIENT01
 
-### Next Stage
+### Documented reconstruction stages
 
-- [ ] Build `CLIENT01`
-- [ ] Join `CLIENT01` to `corp.lab`
-- [ ] Move the computer account into `Workstations`
-- [ ] Verify Group Policy processing
-- [ ] Configure DHCP
-- [ ] Build file services and permissions
-- [ ] Test authentication and access control
+- [x] Windows DHCP scope and client-addressing procedure documented
+- [x] File services architecture documented
+- [x] NTFS and share permission model documented
+- [x] Authentication and access-control test procedure documented
+- [x] GPO verification procedure documented
 
 ## Planned Infrastructure
 
@@ -87,6 +98,7 @@ windows-infrastructure-lab/
 ├── diagrams/
 ├── scripts/
 ├── reference/
+│   └── implementation-guide.md
 └── lab-notes/
     ├── build-log.md
     ├── dc01.md
@@ -96,4 +108,4 @@ windows-infrastructure-lab/
 
 ## Documentation Principle
 
-The repository records the lab as it is actually built. Configuration is documented after it has been performed and verified on the lab machines rather than being presented as completed before implementation.
+The repository records what was actually built and verified, while clearly identifying procedures that were documented as reconstruction steps when the physical lab had to be paused for hardware/resource reasons. This keeps the repository useful as both a portfolio project and a future rebuild reference without confusing planned configuration with live verification.
