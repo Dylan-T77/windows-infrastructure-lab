@@ -10,7 +10,7 @@ Working notes for the Windows client workstation.
 - Role: Domain-joined workstation
 - Virtual network: libvirt `default`
 - Virtual subnet: `192.168.122.0/24`
-- Network adapter model: `e1000`
+- Network adapter model: `e1000e`
 
 ## Virtualization / Network Setup
 
@@ -26,7 +26,7 @@ The active libvirt network is:
 
 CLIENT01 is connected to the same `default` virtual network as DC01 so it can communicate with the domain controller and DNS service.
 
-An `e1000` virtual NIC is being used for CLIENT01 because VirtIO networking caused driver/networking issues during the earlier Windows VM setup. The choice is intentional for compatibility and simplicity in this lab.
+An `e1000e` virtual NIC is being used for CLIENT01 because VirtIO networking caused driver/networking issues during the earlier Windows VM setup. The choice is intentional for compatibility and simplicity in this lab.
 
 ## Configuration Log
 
