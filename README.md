@@ -1,4 +1,4 @@
-# Windows Infrastructure Lab
+ # Windows Infrastructure Lab
 
 A simulated small-business Windows infrastructure environment built for learning, experimentation, troubleshooting and documentation.
 
@@ -20,7 +20,7 @@ The lab is hosted on Pop!_OS using virt-manager with libvirt/KVM on the isolated
 
 ## Project 1 Status
 
-**Project 1 — Windows Infrastructure Lab: COMPLETE / DOCUMENTED**
+**Project 1 - Windows Infrastructure Lab: COMPLETE / DOCUMENTED**
 
 The physical lab build was paused after the core domain/client infrastructure was verified because the host system was approaching its RAM and CPU limits. The remaining service configuration is documented as the intended completed state so the project can be reconstructed later without losing the procedure.
 
